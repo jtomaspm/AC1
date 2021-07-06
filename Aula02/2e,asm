@@ -1,0 +1,22 @@
+	.data
+	.eqv grey, 3
+	.text
+	.globl main
+main:	
+	li $t0, grey		#$t0 = grey
+	add $t1, $0, $t0 	##$t1 = num
+	
+	srl $t3, $t1, 4
+	xor $t1,$t3, $t1
+	srl $t3, $t1, 2
+	xor $t1,$t3, $t1
+	srl $t3, $t1, 1
+	xor $t1,$t3, $t1
+	
+	add $t2, $t1, $0	#$t2 = bin
+	
+	add $a0, $0, $t2	#load bin into $a0
+	li $v0, 35		#print_bin
+	syscall
+	
+	jr $ra
